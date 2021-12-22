@@ -20,7 +20,13 @@
 #include "updatorhelper.h"
 #include "upgradeablemodel.h"
 #include <QSettings>
+#include <QDBusInterface>
+#include <QDBusPendingCall>
 #include <QDebug>
+
+const static QString s_dbusName = "com.cutefish.Session";
+const static QString s_pathName = "/Session";
+const static QString s_interfaceName = "com.cutefish.Session";
 
 UpdatorHelper::UpdatorHelper(QObject *parent)
     : QObject(parent)
@@ -42,6 +48,10 @@ void UpdatorHelper::checkUpdates()
 
     connect(m_trans, &QApt::Transaction::statusChanged, this, [=] (QApt::TransactionStatus status) {
         switch (status) {
+        case QApt::RunningStatus: {
+            qDebug() << "running";
+            break;
+        }
         case QApt::FinishedStatus: {
             m_backend->reloadCache();
 
@@ -63,8 +73,6 @@ void UpdatorHelper::checkUpdates()
         default:
             break;
         }
-
-
     });
 
     m_trans->run();
@@ -108,7 +116,11 @@ void UpdatorHelper::upgrade()
 
 void UpdatorHelper::reboot()
 {
+    QDBusInterface iface(s_dbusName, s_pathName, s_interfaceName, QDBusConnection::sessionBus());
 
+    if (iface.isValid()) {
+        iface.call("reboot");
+    }
 }
 
 QString UpdatorHelper::version()
