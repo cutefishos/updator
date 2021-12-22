@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=System update
+Name[zh_CN]=系统更新
+Exec=/usr/bin/cutefish-updator
+Icon=cutefish-updator
+Type=Application
+NoDisplay=true

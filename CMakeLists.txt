@@ -40,3 +40,9 @@ add_dependencies(cutefish-updator translations)
 
 install(TARGETS cutefish-updator RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-updator/translations)
+
+install(FILES
+    cutefish-updator.desktop
+    DESTINATION /usr/share/applications/
+    COMPONENT Runtime
+)
