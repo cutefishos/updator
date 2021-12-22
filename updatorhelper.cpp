@@ -75,15 +75,15 @@ void UpdatorHelper::checkUpdates()
             m_trans->deleteLater();
             m_trans = nullptr;
 
-            // Add packages.
-            for (QApt::Package *package : m_backend->upgradeablePackages()) {
-                if (!package)
-                    continue;
-
-                UpgradeableModel::self()->addPackage(package->name(), package->version());
-            }
-
             if (success) {
+                // Add packages.
+                for (QApt::Package *package : m_backend->upgradeablePackages()) {
+                    if (!package)
+                        continue;
+
+                    UpgradeableModel::self()->addPackage(package->name(), package->version());
+                }
+
                 emit checkUpdateFinished();
             } else {
                 emit checkError();
@@ -118,6 +118,7 @@ void UpdatorHelper::upgrade()
         switch (status) {
         case QApt::RunningStatus: {
             emit startingUpdate();
+            break;
         }
         case QApt::FinishedStatus: {
             m_trans->cancel();
@@ -125,7 +126,7 @@ void UpdatorHelper::upgrade()
             m_trans = nullptr;
 
             emit updateFinished();
-            emit
+            break;
         }
         default:
             break;

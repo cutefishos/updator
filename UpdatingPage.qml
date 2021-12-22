@@ -47,23 +47,26 @@ Item {
         ScrollView {
             Layout.fillHeight: true
             Layout.fillWidth: true
+            clip: true
 
             TextArea {
                 id: _textArea
                 text: updator.statusDetails
                 enabled: false
 
+                background: Item {
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: FishUI.Units.largeSpacing
+                        radius: FishUI.Theme.smallRadius
+                        color: FishUI.Theme.secondBackgroundColor
+                    }
+                }
+
                 leftPadding: FishUI.Units.largeSpacing * 2
                 rightPadding: FishUI.Units.largeSpacing * 2
                 topPadding: FishUI.Units.largeSpacing * 2
                 bottomPadding: FishUI.Units.largeSpacing * 2
-
-                Rectangle {
-                    anchors.fill: parent
-                    anchors.margins: FishUI.Units.largeSpacing
-                    radius: FishUI.Theme.smallRadius
-                    color: FishUI.Theme.secondBackgroundColor
-                }
 
                 // Auto scroll to bottom.
                 onTextChanged: {
