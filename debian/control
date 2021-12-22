@@ -5,7 +5,7 @@ Maintainer: CutefishOS <cutefishos@foxmail.com>
 Build-Depends: 
 		cmake,
 		libqapt-dev,
-		debhelper-compat (= 13)
+		debhelper-compat (>= 9)
 Standards-Version: 4.6.0
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Browser: https://salsa.debian.org/debian/cutefishos-updator
