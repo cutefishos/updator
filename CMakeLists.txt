@@ -38,4 +38,4 @@ add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
 add_dependencies(cutefish-updator translations)
 
 install(TARGETS cutefish-updator RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${QM_FILES} DESTINATION /usr/share/${PROJECT_NAME}/translations)
+install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-updator/translations)

@@ -20,6 +20,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QTranslator>
+#include <QLocale>
+#include <QFile>
 
 #include "updatorhelper.h"
 #include "upgradeablemodel.h"
@@ -35,6 +38,18 @@ int main(int argc, char *argv[])
     const char *uri = "Cutefish.Updator";
     qmlRegisterType<UpdatorHelper>(uri, 1, 0, "Updator");
     qmlRegisterType<UpgradeableModel>(uri, 1, 0, "UpgradeableModel");
+
+    // Translations
+    QLocale locale;
+    QString qmFilePath = QString("%1/%2.qm").arg("/usr/share/cutefish-updator/translations/").arg(locale.name());
+    if (QFile::exists(qmFilePath)) {
+        QTranslator *translator = new QTranslator(QGuiApplication::instance());
+        if (translator->load(qmFilePath)) {
+            QGuiApplication::installTranslator(translator);
+        } else {
+            translator->deleteLater();
+        }
+    }
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
