@@ -22,6 +22,7 @@
 #include <QSettings>
 #include <QDBusInterface>
 #include <QDBusPendingCall>
+#include <QTimer>
 #include <QDebug>
 
 const static QString s_dbusName = "com.cutefish.Session";
@@ -32,11 +33,14 @@ UpdatorHelper::UpdatorHelper(QObject *parent)
     : QObject(parent)
     , m_checkProgress(0)
     , m_backend(new QApt::Backend(this))
+    , m_trans(nullptr)
 {
     m_backend->init();
 
     QSettings settings("/etc/cutefish", QSettings::IniFormat);
     m_currentVersion = settings.value("Version").toString();
+
+    QTimer::singleShot(100, this, &UpdatorHelper::checkUpdates);
 }
 
 UpdatorHelper::~UpdatorHelper()
