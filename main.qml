@@ -66,6 +66,10 @@ FishUI.Window {
     Updator {
         id: updator
 
+        Component.onCompleted: {
+            updator.checkUpdates()
+        }
+
         onCheckUpdateFinished: {
             stackView.push(updatePage)
         }

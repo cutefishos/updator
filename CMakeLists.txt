@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Core Quick LinguistTools REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick DBus LinguistTools REQUIRED)
 find_package(QApt REQUIRED)
 
 set(PROJECT_SOURCES
@@ -29,6 +29,7 @@ target_link_libraries(cutefish-updator
   PRIVATE
   Qt5::Core
   Qt5::Quick
+  Qt5::DBus
   QApt::Main
 )
 

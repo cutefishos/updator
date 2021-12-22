@@ -28,10 +28,6 @@ Item {
 
     signal checkFinish()
 
-    Component.onCompleted: {
-        updator.checkUpdates()
-    }
-
     ColumnLayout {
         anchors.fill: parent
         spacing: FishUI.Units.largeSpacing * 2
@@ -49,6 +45,12 @@ Item {
         Label {
             text: qsTr("Checking for updates...")
             Layout.alignment: Qt.AlignHCenter
+        }
+
+        Label {
+            text: updator.checkProgress + "%"
+            Layout.alignment: Qt.AlignHCenter
+            color: FishUI.Theme.disabledTextColor
         }
 
         Item {
