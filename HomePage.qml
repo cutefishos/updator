@@ -26,7 +26,15 @@ import Cutefish.Updator 1.0
 Item {
     id: control
 
-    signal checkFinish()
+    property bool error: false
+
+    Connections {
+        target: updator
+
+        function onCheckError() {
+            control.error = true
+        }
+    }
 
     ColumnLayout {
         anchors.fill: parent
@@ -40,17 +48,40 @@ Item {
             width: 64
             height: 64
             Layout.alignment: Qt.AlignHCenter
+            visible: !control.error
         }
 
         Label {
             text: qsTr("Checking for updates...")
             Layout.alignment: Qt.AlignHCenter
+            visible: !control.error
         }
 
         Label {
             text: updator.checkProgress + "%"
             Layout.alignment: Qt.AlignHCenter
             color: FishUI.Theme.disabledTextColor
+            visible: !control.error
+        }
+
+        // Error
+
+        Label {
+            text: qsTr("Check for update failure")
+            Layout.alignment: Qt.AlignHCenter
+            color: FishUI.Theme.disabledTextColor
+            visible: control.error
+        }
+
+        Button {
+            text: qsTr("Recheck")
+            flat: true
+            Layout.alignment: Qt.AlignHCenter
+            visible: control.error
+            onClicked: {
+                control.error = false
+                updator.checkUpdates()
+            }
         }
 
         Item {

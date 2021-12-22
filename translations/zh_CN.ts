@@ -5,8 +5,8 @@
     <name>FinishedPage</name>
     <message>
         <location filename="../FinishedPage.qml" line="34"/>
-        <source>更新已完成，建议您重新启动计算机。</source>
-        <translation></translation>
+        <source>The update is complete and we recommend that you restart your computer.</source>
+        <translation>更新已完成，建议您重新启动计算机。</translation>
     </message>
     <message>
         <location filename="../FinishedPage.qml" line="46"/>
@@ -22,30 +22,40 @@
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../HomePage.qml" line="50"/>
+        <location filename="../HomePage.qml" line="55"/>
         <source>Checking for updates...</source>
         <translation>正在检查更新...</translation>
+    </message>
+    <message>
+        <location filename="../HomePage.qml" line="70"/>
+        <source>Check for update failure</source>
+        <translation>检查更新失败</translation>
+    </message>
+    <message>
+        <location filename="../HomePage.qml" line="77"/>
+        <source>Recheck</source>
+        <translation>重新检查</translation>
     </message>
 </context>
 <context>
     <name>UpdatePage</name>
     <message>
-        <location filename="../UpdatePage.qml" line="51"/>
+        <location filename="../UpdatePage.qml" line="52"/>
         <source>Package updates are available</source>
         <translation>有可用的包更新</translation>
     </message>
     <message>
-        <location filename="../UpdatePage.qml" line="57"/>
+        <location filename="../UpdatePage.qml" line="58"/>
         <source>Your system is up to date</source>
         <translation>您的系统已是最新</translation>
     </message>
     <message>
-        <location filename="../UpdatePage.qml" line="63"/>
+        <location filename="../UpdatePage.qml" line="64"/>
         <source>Current Version: %1</source>
         <translation>当前版本: %1</translation>
     </message>
     <message>
-        <location filename="../UpdatePage.qml" line="129"/>
+        <location filename="../UpdatePage.qml" line="135"/>
         <source>Update now</source>
         <translation>立即更新</translation>
     </message>

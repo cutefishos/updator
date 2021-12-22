@@ -64,11 +64,12 @@ void UpdatorHelper::checkUpdates()
     connect(m_trans, &QApt::Transaction::statusChanged, this, [=] (QApt::TransactionStatus status) {
         switch (status) {
         case QApt::RunningStatus: {
-            qDebug() << "running";
             break;
         }
         case QApt::FinishedStatus: {
             m_backend->reloadCache();
+
+            bool success = m_trans->error() == QApt::Success;
 
             m_trans->cancel();
             m_trans->deleteLater();
@@ -82,7 +83,12 @@ void UpdatorHelper::checkUpdates()
                 UpgradeableModel::self()->addPackage(package->name(), package->version());
             }
 
-            emit checkUpdateFinished();
+            if (success) {
+                emit checkUpdateFinished();
+            } else {
+                emit checkError();
+            }
+
             break;
         }
         default:

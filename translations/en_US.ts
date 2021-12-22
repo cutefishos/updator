@@ -22,30 +22,40 @@
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="../HomePage.qml" line="50"/>
+        <location filename="../HomePage.qml" line="55"/>
         <source>Checking for updates...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../HomePage.qml" line="70"/>
+        <source>Check for update failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../HomePage.qml" line="77"/>
+        <source>Recheck</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>UpdatePage</name>
     <message>
-        <location filename="../UpdatePage.qml" line="51"/>
+        <location filename="../UpdatePage.qml" line="52"/>
         <source>Package updates are available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UpdatePage.qml" line="57"/>
+        <location filename="../UpdatePage.qml" line="58"/>
         <source>Your system is up to date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UpdatePage.qml" line="63"/>
+        <location filename="../UpdatePage.qml" line="64"/>
         <source>Current Version: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UpdatePage.qml" line="129"/>
+        <location filename="../UpdatePage.qml" line="135"/>
         <source>Update now</source>
         <translation type="unfinished"></translation>
     </message>
