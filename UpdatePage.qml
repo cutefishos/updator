@@ -45,6 +45,7 @@ Item {
 
         Item {
             height: FishUI.Units.largeSpacing * 2
+            visible: !_listView.visible
         }
 
         Label {
@@ -65,7 +66,12 @@ Item {
         }
 
         Item {
-            Layout.fillHeight: true
+            Layout.fillHeight: !_listView.visible
+        }
+
+        Item {
+            height: FishUI.Units.smallSpacing
+            visible: _listView.visible
         }
 
         ListView {
