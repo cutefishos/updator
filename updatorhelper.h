@@ -1,0 +1,59 @@
+#ifndef UPDATORHELPER_H
+#define UPDATORHELPER_H
+
+/*
+ * Copyright (C) 2021 CutefishOS Team.
+ *
+ * Author:     Kate Leet <kate@cutefishos.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <QObject>
+
+// QApt
+#include <QApt/Backend>
+#include <QApt/Config>
+#include <QApt/Transaction>
+
+class UpdatorHelper : public QObject
+{
+    Q_OBJECT
+    Q_PROPERTY(QString version READ version CONSTANT)
+    Q_PROPERTY(QString statusDetails READ statusDetails NOTIFY statusDetailsChanged)
+
+public:
+    explicit UpdatorHelper(QObject *parent = nullptr);
+
+    Q_INVOKABLE void checkUpdates();
+    Q_INVOKABLE void upgrade();
+    Q_INVOKABLE void reboot();
+
+    QString version();
+    QString statusDetails();
+
+signals:
+    void startingUpdate();
+    void updateFinished();
+    void checkUpdateFinished();
+    void statusDetailsChanged();
+
+private:
+    QString m_currentVersion;
+    QString m_statusDetails;
+    QApt::Backend *m_backend;
+    QApt::Transaction *m_trans;
+};
+
+#endif // UPDATORHELPER_H
