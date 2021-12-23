@@ -121,11 +121,18 @@ void UpdatorHelper::upgrade()
             break;
         }
         case QApt::FinishedStatus: {
+            bool success = m_trans->error() == QApt::Success;
+
             m_trans->cancel();
             m_trans->deleteLater();
             m_trans = nullptr;
 
-            emit updateFinished();
+            if (success) {
+                emit updateFinished();
+            } else {
+                emit updateError();
+            }
+
             break;
         }
         default:

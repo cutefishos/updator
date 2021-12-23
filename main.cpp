@@ -19,6 +19,7 @@
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QDBusConnection>
 #include <QQmlContext>
 #include <QTranslator>
 #include <QLocale>
@@ -38,6 +39,10 @@ int main(int argc, char *argv[])
     const char *uri = "Cutefish.Updator";
     qmlRegisterType<UpdatorHelper>(uri, 1, 0, "Updator");
     qmlRegisterType<UpgradeableModel>(uri, 1, 0, "UpgradeableModel");
+
+    if (!QDBusConnection::sessionBus().registerService("com.cutefish.UpdatorGui")) {
+        return 0;
+    }
 
     // Translations
     QLocale locale;

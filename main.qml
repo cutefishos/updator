@@ -39,6 +39,7 @@ FishUI.Window {
     flags: Qt.FramelessWindowHint
 
     property bool updating: false
+    property bool updateSuccess: false
 
     onClosing: {
         // 关闭保护
@@ -76,6 +77,13 @@ FishUI.Window {
         }
 
         onUpdateFinished: {
+            rootWindow.updateSuccess = true
+            rootWindow.updating = false
+            stackView.push(finishedPage)
+        }
+
+        onUpdateError: {
+            rootWindow.updateSuccess = false
             rootWindow.updating = false
             stackView.push(finishedPage)
         }

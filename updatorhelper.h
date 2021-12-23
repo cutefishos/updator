@@ -1,6 +1,3 @@
-#ifndef UPDATORHELPER_H
-#define UPDATORHELPER_H
-
 /*
  * Copyright (C) 2021 CutefishOS Team.
  *
@@ -19,6 +16,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#ifndef UPDATORHELPER_H
+#define UPDATORHELPER_H
 
 #include <QObject>
 
@@ -49,6 +49,7 @@ public:
 signals:
     void startingUpdate();
     void updateFinished();
+    void updateError();
     void checkUpdateFinished();
     void statusDetailsChanged();
     void checkProgressChanged();
