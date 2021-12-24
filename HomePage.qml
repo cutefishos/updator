@@ -44,6 +44,15 @@ Item {
             Layout.fillHeight: true
         }
 
+        Image {
+            width: 64
+            height: 64
+            sourceSize: Qt.size(width, height)
+            source: "qrc:/images/check_failed.svg"
+            Layout.alignment: Qt.AlignHCenter
+            visible: control.error
+        }
+
         FishUI.BusyIndicator {
             width: 64
             height: 64

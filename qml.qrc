@@ -7,5 +7,6 @@
         <file>FinishedPage.qml</file>
         <file>images/laptop.png</file>
         <file>images/logo.png</file>
+        <file>images/check_failed.svg</file>
     </qresource>
 </RCC>
