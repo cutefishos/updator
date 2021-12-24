@@ -70,6 +70,7 @@ void UpdatorHelper::checkUpdates()
             m_backend->reloadCache();
 
             bool success = m_trans->error() == QApt::Success;
+            QString errorDetails = m_trans->errorDetails();
 
             m_trans->cancel();
             m_trans->deleteLater();
@@ -86,7 +87,7 @@ void UpdatorHelper::checkUpdates()
 
                 emit checkUpdateFinished();
             } else {
-                emit checkError();
+                emit checkError(errorDetails);
             }
 
             break;

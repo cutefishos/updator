@@ -53,7 +53,7 @@ signals:
     void checkUpdateFinished();
     void statusDetailsChanged();
     void checkProgressChanged();
-    void checkError();
+    void checkError(const QString &details);
 
 private:
     QString m_currentVersion;

@@ -31,8 +31,9 @@ Item {
     Connections {
         target: updator
 
-        function onCheckError() {
+        function onCheckError(details) {
             control.error = true
+            _textArea.text = details
         }
     }
 
@@ -82,6 +83,42 @@ Item {
             visible: control.error
         }
 
+        ScrollView {
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            visible: _textArea.text != "" && control.error
+            clip: true
+
+            TextArea {
+                id: _textArea
+                enabled: false
+                selectByMouse: true
+
+                implicitWidth: 0
+
+                background: Item {
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: FishUI.Units.smallSpacing
+                        anchors.leftMargin: FishUI.Units.largeSpacing
+                        anchors.rightMargin: FishUI.Units.largeSpacing
+                        radius: FishUI.Theme.smallRadius
+                        color: FishUI.Theme.secondBackgroundColor
+                    }
+                }
+
+                leftPadding: FishUI.Units.largeSpacing * 2
+                rightPadding: FishUI.Units.largeSpacing * 2
+                topPadding: FishUI.Units.largeSpacing * 2
+                bottomPadding: FishUI.Units.largeSpacing * 2
+
+                // Auto scroll to bottom.
+                onTextChanged: {
+                    _textArea.cursorPosition = _textArea.text.length - 1
+                }
+            }
+        }
+
         Button {
             text: qsTr("Recheck")
             flat: true
@@ -89,6 +126,7 @@ Item {
             visible: control.error
             onClicked: {
                 control.error = false
+                _textArea.clear()
                 updator.checkUpdates()
             }
         }
