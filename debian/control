@@ -2,18 +2,19 @@ Source: cutefishos-updator
 Section: devel
 Priority: optional
 Maintainer: CutefishOS <cutefishos@foxmail.com>
-Build-Depends: 
-		cmake,
+Build-Depends:  cmake,
 		libqapt-dev,
+		qtbase5-dev,
+		qtdeclarative5-dev,
+		qtquickcontrols2-5-dev,
+		qttools5-dev,
+		qttools5-dev-tools,
 		debhelper (>= 9)
 Standards-Version: 4.6.0
-Homepage: <insert the upstream URL, if relevant>
-#Vcs-Browser: https://salsa.debian.org/debian/cutefishos-updator
-#Vcs-Git: https://salsa.debian.org/debian/cutefishos-updator.git
+Homepage: https://cutefishos.com
 Rules-Requires-Root: no
 
 Package: cutefishos-updator
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: CutefishOS Updator.
