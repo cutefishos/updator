@@ -82,7 +82,9 @@ void UpdatorHelper::checkUpdates()
                     if (!package)
                         continue;
 
-                    UpgradeableModel::self()->addPackage(package->name(), package->version());
+                    UpgradeableModel::self()->addPackage(package->name(),
+                                                         package->version(),
+                                                         package->downloadSize());
                 }
 
                 emit checkUpdateFinished();

@@ -29,13 +29,15 @@ class UpgradeableModel : public QAbstractListModel
 public:
     enum Roles {
         NameRole = Qt::UserRole + 1,
-        VersionRole
+        VersionRole,
+        DownloadSize
     };
     Q_ENUM(Roles)
 
     struct PackageInfo {
         QString name;
         QString version;
+        quint64 downloadSize;
     };
 
     static UpgradeableModel *self();
@@ -46,7 +48,7 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    void addPackage(const QString &name, const QString &version);
+    void addPackage(const QString &name, const QString &version, quint64 downloadSize);
 
 private:
     QList<PackageInfo> m_packages;

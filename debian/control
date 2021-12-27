@@ -1,4 +1,4 @@
-Source: cutefishos-updator
+Source: cutefish-updator
 Section: devel
 Priority: optional
 Maintainer: CutefishOS <cutefishos@foxmail.com>
@@ -14,7 +14,7 @@ Standards-Version: 4.6.0
 Homepage: https://cutefishos.com
 Rules-Requires-Root: no
 
-Package: cutefishos-updator
+Package: cutefish-updator
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: CutefishOS Updator.

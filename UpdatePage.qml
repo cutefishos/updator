@@ -89,7 +89,7 @@ Item {
 
             delegate: Item {
                 width: ListView.view.width
-                height: 40
+                height: 50
 
                 Rectangle {
                     anchors.fill: parent
@@ -114,13 +114,38 @@ Item {
                         antialiasing: true
                     }
 
-                    Label {
-                        text: model.name
+                    // Name and version
+                    Item {
                         Layout.fillWidth: true
+                        Layout.fillHeight: true
+
+                        ColumnLayout {
+                            anchors.fill: parent
+                            spacing: 0
+
+                            Item {
+                                Layout.fillHeight: true
+                            }
+
+                            Label {
+                                text: model.name
+                                Layout.fillWidth: true
+                            }
+
+                            Label {
+                                text: model.version
+                                color: FishUI.Theme.disabledTextColor
+                            }
+
+                            Item {
+                                Layout.fillHeight: true
+                            }
+                        }
                     }
 
+                    // Size
                     Label {
-                        text: model.version
+                        text: model.downloadSize
                         color: FishUI.Theme.disabledTextColor
                     }
                 }
