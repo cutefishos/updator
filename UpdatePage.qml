@@ -26,6 +26,17 @@ import Cutefish.Updator 1.0
 Item {
     id: control
 
+//    Image {
+//        anchors.top: parent.top
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        width: 167
+//        height: 26
+//        sourceSize: Qt.size(500, 76)
+//        source: "qrc:/images/logo.png"
+//        asynchronous: true
+//        visible: !_listView.visible
+//    }
+
     ColumnLayout {
         anchors.fill: parent
 
@@ -33,11 +44,12 @@ Item {
             Layout.fillHeight: !_listView.visible
         }
 
+        // 插画
         Image {
-            Layout.preferredWidth: 167
-            Layout.preferredHeight: 26
-            sourceSize: Qt.size(500, 76)
-            source: "qrc:/images/logo.png"
+            Layout.preferredWidth: 143
+            Layout.preferredHeight: 172
+            source: "qrc:/images/done.svg"
+            sourceSize: Qt.size(143, 172)
             Layout.alignment: Qt.AlignHCenter
             asynchronous: true
             visible: !_listView.visible
