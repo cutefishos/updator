@@ -57,7 +57,11 @@ void UpdatorHelper::checkUpdates()
     m_trans->setLocale(QLatin1String(setlocale(LC_MESSAGES, 0)));
 
     connect(m_trans, &QApt::Transaction::progressChanged, this, [=] (int progress) {
-        m_checkProgress = progress;
+        int value = progress;
+        if (progress > 100)
+            progress = 100;
+
+        m_checkProgress = value;
         emit checkProgressChanged();
     });
 
