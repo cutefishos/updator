@@ -32,7 +32,7 @@ FishUI.Window {
     maximumWidth: 640
     maximumHeight: 480
     visible: true
-    title: qsTr("System update")
+    title: qsTr("Software update")
 
     minimizeButtonVisible: false
 
