@@ -4,4 +4,4 @@ Name[zh_CN]=软件更新
 Exec=/usr/bin/cutefish-updator
 Icon=cutefish-updator
 Type=Application
-NoDisplay=true
+NoDisplay=false

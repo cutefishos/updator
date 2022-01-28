@@ -47,7 +47,7 @@
     <message>
         <location filename="../UpdatePage.qml" line="64"/>
         <source>Package updates are available</source>
-        <translation>有可用的包更新</translation>
+        <translation>有可用的软件更新</translation>
     </message>
     <message>
         <location filename="../UpdatePage.qml" line="70"/>
