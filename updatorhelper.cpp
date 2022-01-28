@@ -83,7 +83,7 @@ void UpdatorHelper::checkUpdates()
                         continue;
 
                     UpgradeableModel::self()->addPackage(package->name(),
-                                                         package->version(),
+                                                         package->availableVersion(),
                                                          package->downloadSize());
                 }
 
